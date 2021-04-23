@@ -1,4 +1,3 @@
-
 <div class="card"  >
     <div class="card-body">
       <h2 class="card-title">Job Details</h2>
@@ -7,12 +6,11 @@
         <div *ngIf="job != null">
                 <p>JobId:  {{job.jobId}}</p>
                 <p>Engineer: {{job.engineer}}</p>
-                <p>Customer Name: {{job.customerId}} {{job.customerId!=0 &&job.customerId!=null  ? job.customerId:'  Unknown'}}</p>
-                <p>Customer Type: {{job.type!=0 &&job.type!=null  ? job.type:'  Unknown'}}</p>
-                <p>When: {{job.when  | date: 'MM/dd/yyyy'}}</p>          
+                <p>Customer Name: {{job.customerId != null && job.customerId != 0  ? job.customer.name : 'Unknown'}}</p>
+                <p>Customer Type: {{job.customerId != null && job.customerId != 0  ? job.customer.type : 'Unknown'}}</p>
+                <p>When: {{job.when  | date: 'dd/MM/yyyy'}}</p>          
         </div>   
         <a [routerLink]="['/jobs']">Back</a>
-
     </div>
     </div>
   </div>

@@ -45,9 +45,6 @@ namespace DeveloperTest.Controllers
         public CustomerModel Create(BaseCustomerModel model)
         {
             return _customerService.CreateCustomer(model);
-            //var customer = _customerService.CreateCustomer(model);
-
-            //return Created($"customer/{customer.CustomerId}", customer);
         }
     }
 }

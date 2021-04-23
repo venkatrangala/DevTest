@@ -23,7 +23,8 @@ export class JobComponent implements OnInit {
     jobId: 0,
     engineer: null,
     customerId: 0,
-    when: null
+    when: null,
+    customer : null
   };
   public Customers: CustomerModel[] = [];
 
@@ -32,7 +33,6 @@ export class JobComponent implements OnInit {
     name: null,
     type: null,
   };
-
 
   constructor(
     private engineerService: EngineerService,
@@ -46,7 +46,6 @@ export class JobComponent implements OnInit {
   }
 
   public createJob(form: NgForm): void {
-    debugger
     if (form.invalid) {
       alert('form is not valid');
     } else {
@@ -55,5 +54,4 @@ export class JobComponent implements OnInit {
       });
     }
   }
-
 }

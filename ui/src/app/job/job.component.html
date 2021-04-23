@@ -13,9 +13,9 @@
           </div>
           <div class="form-group col-lg-6" *ngIf="Customers.length>0">
             <label for="customer">Customer</label>
-            <select  class="form-control" style="width:100%" name="customer" required #customer="ngModel" ngModel placeholder="Please select" [(ngModel)]="newJob.customerId">
+            <select class="form-control" style="width:100%" name="customer" required #customer="ngModel" ngModel placeholder="Please select" [(ngModel)]="newJob.customerId">
               <option [ngValue]="undefined" selected>-- Select --</option>
-              <option  value="{{customer.customerId}}" *ngFor="let customer of Customers">{{customer.name}}</option>
+              <option [ngValue]="customer.customerId" *ngFor="let customer of Customers">{{customer.name}}</option>
             </select>
             <small *ngIf="customer.invalid">Select a customer</small>
           </div>
@@ -49,8 +49,8 @@
           <tbody>
             <tr *ngFor="let job of jobs">
               <td>{{job.engineer}}</td>
-              <td>{{job.name==null  ? 'Un Known':job.name}}</td>
-              <td>{{job.when | date:'shortDate'}}</td>
+              <td>{{job.customerId != null && job.customerId != 0  ? job.customer.name : 'Unknown'}}</td>
+              <td>{{job.when | date:'dd/MM/yyyy'}}</td>
               <td>
                 <a [routerLink]="['/job', job.jobId]">Open</a>
               </td>
