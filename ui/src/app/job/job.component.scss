@@ -11,10 +11,12 @@ form {
 
   input, select, button {
     display: block;
-    width: 250px;
+   
     margin-bottom: 15px;
   }
-
+label{
+  float:left;
+}
   small {
     color: red;
     margin-top: -12px;

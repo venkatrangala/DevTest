@@ -1,0 +1,68 @@
+<div class="card  range range-xs-center row "  >
+    <div class="card-body col-lg-12">
+      <h2 class="card-title">New Customer Form</h2>
+        
+        <form #customerForm="ngForm" (ngSubmit)="createCustomer(newCustomer)" >
+  <div class="col-lg-6">
+            <div class="form-group">
+                <label for="customerName">Customer Name</label>
+                <input minlength="5" placeholder="Please enter atleast 5 charactors " style="width:100%" class="form-control" type="text" name="customerName" ngModel required #customerName="ngModel" [(ngModel)]="newCustomer.name" />
+                
+                <small *ngIf="customerName.invalid">Customer name is required</small>
+               
+                <small *ngIf="customerName.errors?.minlength">
+                    Name must be at least 5 characters long.
+               </small> 
+              </div>
+              </div>
+              <div class="col-lg-6">
+
+          <div class="form-group ">
+            <label for="Type">Customer Type</label>
+            <select  class="form-control" style="width:100%" name="Type" required #Type="ngModel" ngModel placeholder="Please select" [(ngModel)]="newCustomer.type">
+              <option [ngValue]="undefined" selected>-- Select --</option>
+              <option *ngFor="let Type of customerType">{{Type}}</option>
+  </select>
+
+            <small *ngIf="Type.invalid">Please select customer Type</small>
+          </div>
+         </div>
+       
+        <button type="submit" [disabled]="customerForm.invalid">Add Customer</button>
+    
+      </form>
+  </div>
+</div>
+ <div>
+&nbsp;
+ </div>
+    <div class="card "  style="text-align: center;">
+      <h2 class="card-title">Customer List</h2>
+      <div class="card-body">
+        
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Customer Name</th>
+              <th scope="col">Customer Type</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of Customers">
+              <td>{{customer.name}}</td>
+              <td>{{customer.type}}</td>
+              <td>
+                <a [routerLink]="['/customer', customer.customerId]">Open</a>
+              </td>
+            </tr>
+           
+          </tbody>
+        </table>       
+         
+    </div>
+    </div>
+  
+
+
+

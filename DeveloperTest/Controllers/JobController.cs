@@ -35,6 +35,7 @@ namespace DeveloperTest.Controllers
         }
 
         [HttpPost]
+        //[Route("CreateJob"), HttpPost]
         public IActionResult Create(BaseJobModel model)
         {
             if (model.When.Date < DateTime.Now.Date)

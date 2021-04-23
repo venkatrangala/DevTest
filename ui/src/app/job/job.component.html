@@ -1,33 +1,65 @@
-<h2>New job form</h2>
-<form #jobForm="ngForm" (ngSubmit)="createJob(jobForm)">
-  <label for="engineer">Engineer</label>
-  <select name="engineer" required #engineer="ngModel" ngModel placeholder="Please select" [(ngModel)]="newJob.engineer">
-    <option [ngValue]="undefined" selected>Please select</option>
-    <option *ngFor="let engineer of engineers">{{engineer}}</option>
-  </select>
-  <small *ngIf="engineer.invalid">Please select an engineer</small>
-  <label for="when">When</label>
-  <input type="date" name="when" ngModel required #when="ngModel" [(ngModel)]="newJob.when" />
-  <small *ngIf="when.invalid">Please select a valid date</small>
-  <button type="submit" [disabled]="jobForm.invalid">Add Job</button>
-</form>
+  <div class="card row col-lg-12 " >
+    <div class="card-body">
+      <h2 class="card-title">New job form</h2>
+        
+        <form #jobForm="ngForm" (ngSubmit)="createJob(jobForm)" >
+          <div class="form-group col-lg-6">
+            <label for="engineer">Engineer</label>
+            <select class="form-control" style="width:100%" name="engineer" required #engineer="ngModel" ngModel placeholder="Please select" [(ngModel)]="newJob.engineer">
+              <option [ngValue]="undefined" selected>-- Select --</option>
+              <option *ngFor="let engineer of engineers">{{engineer}}</option>
+            </select>
+            <small *ngIf="engineer.invalid">Select an engineer</small>
+          </div>
+          <div class="form-group col-lg-6" *ngIf="Customers.length>0">
+            <label for="customer">Customer</label>
+            <select  class="form-control" style="width:100%" name="customer" required #customer="ngModel" ngModel placeholder="Please select" [(ngModel)]="newJob.customerId">
+              <option [ngValue]="undefined" selected>-- Select --</option>
+              <option  value="{{customer.customerId}}" *ngFor="let customer of Customers">{{customer.name}}</option>
+            </select>
+            <small *ngIf="customer.invalid">Select a customer</small>
+          </div>
+          <div class="form-group  col-lg-6">
+            <label for="when">When</label>
+            <input style="width:100%" class="form-control" type="date" name="when" ngModel required #when="ngModel" [(ngModel)]="newJob.when" />
+            <small *ngIf="when.invalid">Select a valid date</small>
+          </div>
+          <button type="submit"  [disabled]="jobForm.invalid">Add Job</button>
+      </form>
+  </div>
+  </div>
+ <div>
+&nbsp;
+ </div>
 
-<h2>Jobs list</h2>
-<table spacing="0">
-  <thead>
-    <tr>
-      <th>Engineer</th>
-      <th>When</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let job of jobs">
-      <td>{{job.engineer}}</td>
-      <td>{{job.when | date:'shortDate'}}</td>
-      <td>
-        <a [routerLink]="['/job', job.jobId]">Open</a>
-      </td>
-    </tr>
-  </tbody>
-</table>
+    <div class="card "  style="width:100%;text-align: center;">
+      <h2 class="card-title">Job List</h2>
+      <div class="card-body">
+        
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Engineer</th>
+              <th scope="col">Customer </th>
+
+              <th scope="col">When</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let job of jobs">
+              <td>{{job.engineer}}</td>
+              <td>{{job.name==null  ? 'Un Known':job.name}}</td>
+              <td>{{job.when | date:'shortDate'}}</td>
+              <td>
+                <a [routerLink]="['/job', job.jobId]">Open</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>       
+    </div>
+    </div>
+  
+
+
+

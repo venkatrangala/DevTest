@@ -1,0 +1,17 @@
+
+<div class="card">
+    <div class="card-body">
+      <h2 class="card-title">Customer Details</h2>
+      <div class="card-body">
+        
+        <div *ngIf="customer != null">
+                <p>CustomerId:  {{customer.customerId}}</p>
+                <p>Name: {{customer.name}}</p>
+                <p>Type: {{customer.type}}</p>          
+        </div>   
+        <a [routerLink]="['/customer']">Back</a>
+
+    </div>
+    </div>
+  </div>
+  

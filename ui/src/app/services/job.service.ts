@@ -19,6 +19,7 @@ export class JobService {
   }
 
   public CreateJob(job: JobModel): Promise<object> {
+    debugger
     return this.httpClient.post('http://localhost:63235/job', job).toPromise();
   }
 }
